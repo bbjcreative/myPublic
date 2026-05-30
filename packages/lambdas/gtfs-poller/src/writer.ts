@@ -4,7 +4,7 @@ import { S3Client } from '@aws-sdk/client-s3';
 import { ddb, TABLE_STOPS, TABLE_ROUTES } from '@transit-my/lambda-shared/db';
 import { Stop, Route } from '@transit-my/lambda-shared/types';
 
-const s3 = new S3Client({ region: process.env.AWS_REGION ?? 'ap-southeast-1' });
+const s3 = new S3Client({ region: process.env.AWS_REGION ?? 'ap-southeast-5' });
 const S3_BUCKET = process.env.GTFS_S3_BUCKET ?? '';
 const TTL_SECONDS = 8 * 24 * 60 * 60; // 8 days — survives until next weekly poll
 

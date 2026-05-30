@@ -6,7 +6,7 @@ import { ddb, TABLE_ALERTS, TABLE_USERS } from '@transit-my/lambda-shared/db';
 import { AlertRecord } from '@transit-my/lambda-shared/types';
 import { buildAlertMessage } from './templates';
 
-const sns = new SNSClient({ region: process.env.AWS_REGION ?? 'ap-southeast-1' });
+const sns = new SNSClient({ region: process.env.AWS_REGION ?? 'ap-southeast-5' });
 const SNS_TOPIC_ARN = process.env.SNS_ALERTS_TOPIC_ARN ?? '';
 
 interface SubscribeRequest {

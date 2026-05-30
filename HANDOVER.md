@@ -176,8 +176,9 @@ GTFS data freshness:
 
 | Secret name | Where to get it |
 |---|---|
-| `AWS_DEPLOY_ROLE_ARN` | AWS IAM — create OIDC role for GitHub Actions |
+| `AWS_ROLE_TO_ASSUME` | ✅ Set — OIDC role locked to `bbjcreative/myPublic` |
 | `AWS_ACCOUNT_ID` | ✅ `339712939731` |
+| `AWS_REGION` | ✅ `ap-southeast-5` (Malaysia / KL) |
 | ~~`DATA_GOV_MY_API_KEY`~~ | Not needed — data.gov.my Open API requires no token |
 | `SNS_ALERTS_TOPIC_ARN` | CDK output after first deploy |
 | `EXPO_TOKEN` | https://expo.dev — account settings |

@@ -8,7 +8,7 @@ const app = new cdk.App();
 new TransitStack(app, 'TransitMyStack', {
   env: {
     account: process.env.AWS_ACCOUNT_ID,
-    region: process.env.AWS_REGION ?? 'ap-southeast-1',
+    region: process.env.AWS_REGION ?? 'ap-southeast-5',
   },
   tags: {
     Project: 'transit-my',
