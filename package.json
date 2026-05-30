@@ -1,0 +1,24 @@
+{
+  "name": "transit-my",
+  "private": true,
+  "workspaces": [
+    "apps/mobile",
+    "packages/lambdas/shared",
+    "packages/lambdas/gtfs-poller",
+    "packages/lambdas/realtime-proxy",
+    "packages/lambdas/trip-planner",
+    "packages/lambdas/jpj-proxy",
+    "packages/lambdas/notification-dispatcher",
+    "infrastructure"
+  ],
+  "engines": { "node": ">=20.0.0" },
+  "scripts": {
+    "mobile": "npm run start --workspace=apps/mobile",
+    "deploy:infra": "npm run deploy --workspace=infrastructure",
+    "build:lambdas": "npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}
