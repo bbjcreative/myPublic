@@ -1,5 +1,5 @@
 {
-  "name": "@transit-my/infrastructure",
+  "name": "@my-public/infrastructure",
   "version": "1.0.0",
   "private": true,
   "scripts": {

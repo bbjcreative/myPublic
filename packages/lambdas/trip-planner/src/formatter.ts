@@ -1,4 +1,4 @@
-import { TripOption } from '@transit-my/lambda-shared/types';
+import { TripOption } from '@my-public/lambda-shared/types';
 import { RouteResult } from './dijkstra';
 
 export function formatTripOptions(

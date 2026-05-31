@@ -16,7 +16,7 @@ export class DynamoDbConstruct extends Construct {
     super(scope, id);
 
     const stops = new dynamodb.Table(this, 'Stops', {
-      tableName: 'transit-stops',
+      tableName: 'mypublic-stops',
       partitionKey: { name: 'PK', type: dynamodb.AttributeType.STRING },
       sortKey: { name: 'SK', type: dynamodb.AttributeType.STRING },
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
@@ -37,7 +37,7 @@ export class DynamoDbConstruct extends Construct {
     });
 
     const routes = new dynamodb.Table(this, 'Routes', {
-      tableName: 'transit-routes',
+      tableName: 'mypublic-routes',
       partitionKey: { name: 'PK', type: dynamodb.AttributeType.STRING },
       sortKey: { name: 'SK', type: dynamodb.AttributeType.STRING },
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
@@ -51,7 +51,7 @@ export class DynamoDbConstruct extends Construct {
     });
 
     const users = new dynamodb.Table(this, 'Users', {
-      tableName: 'transit-users',
+      tableName: 'mypublic-users',
       partitionKey: { name: 'PK', type: dynamodb.AttributeType.STRING },
       sortKey: { name: 'SK', type: dynamodb.AttributeType.STRING },
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
@@ -59,7 +59,7 @@ export class DynamoDbConstruct extends Construct {
     });
 
     const alerts = new dynamodb.Table(this, 'Alerts', {
-      tableName: 'transit-alerts',
+      tableName: 'mypublic-alerts',
       partitionKey: { name: 'PK', type: dynamodb.AttributeType.STRING },
       sortKey: { name: 'SK', type: dynamodb.AttributeType.STRING },
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,

@@ -1,5 +1,5 @@
 {
-  "name": "@transit-my/gtfs-poller",
+  "name": "@my-public/gtfs-poller",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,7 +7,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@transit-my/lambda-shared": "*",
+    "@my-public/lambda-shared": "*",
     "axios": "^1.7.2",
     "adm-zip": "^0.5.14",
     "csv-parse": "^5.5.6"

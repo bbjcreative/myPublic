@@ -1,6 +1,6 @@
 import { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from 'aws-lambda';
-import { jsonResponse, errorResponse, ApiError } from '@transit-my/lambda-shared/errors';
-import { requireQueryParam } from '@transit-my/lambda-shared/validation';
+import { jsonResponse, errorResponse, ApiError } from '@my-public/lambda-shared/errors';
+import { requireQueryParam } from '@my-public/lambda-shared/validation';
 import { fetchRealtimeFeed, getSupportedAgencies } from './fetcher';
 import { decodeVehiclePositions } from './decoder';
 

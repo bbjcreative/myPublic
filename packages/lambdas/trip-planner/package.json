@@ -1,5 +1,5 @@
 {
-  "name": "@transit-my/trip-planner",
+  "name": "@my-public/trip-planner",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,7 +7,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@transit-my/lambda-shared": "*",
+    "@my-public/lambda-shared": "*",
     "geolib": "^3.3.4"
   },
   "devDependencies": {

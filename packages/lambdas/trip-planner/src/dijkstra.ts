@@ -1,5 +1,5 @@
 import { TransitGraph, TransitEdge, TransitNode } from './graph';
-import { TripLeg } from '@transit-my/lambda-shared/types';
+import { TripLeg } from '@my-public/lambda-shared/types';
 import { getDistance } from 'geolib';
 
 const WALK_SPEED_M_PER_MIN = 80;

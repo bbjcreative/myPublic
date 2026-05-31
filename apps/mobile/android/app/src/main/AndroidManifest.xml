@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="my.transit.app">
+    package="my.mypublic.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -22,10 +22,10 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-5181607198940787~2782126917" />
 
-        <!-- Google Maps API Key -->
+        <!-- Google Maps API Key — injected by EAS Build from MAPS_API_KEY secret -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyD7LxlZsUTPUEkKe8YEHiBRyiAmL0t5htY" />
+            android:value="$(MAPS_API_KEY)" />
 
         <!-- Disable AdMob auto-init — app calls mobileAds().initialize() manually in App.tsx -->
         <meta-data

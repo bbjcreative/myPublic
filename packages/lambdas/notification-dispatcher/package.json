@@ -1,5 +1,5 @@
 {
-  "name": "@transit-my/notification-dispatcher",
+  "name": "@my-public/notification-dispatcher",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,7 +7,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@transit-my/lambda-shared": "*"
+    "@my-public/lambda-shared": "*"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

@@ -1,5 +1,5 @@
 {
-  "name": "@transit-my/jpj-proxy",
+  "name": "@my-public/jpj-proxy",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,7 +7,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@transit-my/lambda-shared": "*",
+    "@my-public/lambda-shared": "*",
     "axios": "^1.7.2"
   },
   "devDependencies": {

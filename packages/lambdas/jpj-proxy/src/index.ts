@@ -1,6 +1,6 @@
 import { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from 'aws-lambda';
-import { jsonResponse, errorResponse, ApiError } from '@transit-my/lambda-shared/errors';
-import { requireQueryParam, sanitizePlate, sanitizeIC } from '@transit-my/lambda-shared/validation';
+import { jsonResponse, errorResponse, ApiError } from '@my-public/lambda-shared/errors';
+import { requireQueryParam, sanitizePlate, sanitizeIC } from '@my-public/lambda-shared/validation';
 import { getSummons } from './summons';
 import { getDemerit } from './demerit';
 

@@ -31,7 +31,7 @@ export class CloudFrontConstruct extends Construct {
 
     // Rate limit: 100 req/min per IP via WAF (attached separately in production)
     this.distribution = new cloudfront.Distribution(this, 'Distribution', {
-      comment: 'transit-my CDN',
+      comment: 'my-public CDN',
       defaultBehavior: {
         origin: origins.S3BucketOrigin.withOriginAccessControl(props.gtfsBucket, { originAccessControl: oac }),
         viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.HTTPS_ONLY,

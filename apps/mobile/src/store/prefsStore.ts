@@ -17,12 +17,14 @@ interface PrefsState {
   savedRoutes: SavedRoute[];
   adFreeUntil: number;
   notificationsEnabled: boolean;
+  onboardingDone: boolean;
   setLang: (lang: Lang) => void;
   addSavedRoute: (route: SavedRoute) => void;
   removeSavedRoute: (id: string) => void;
   grantAdFree: (durationMs: number) => void;
   isAdFree: () => boolean;
   setNotificationsEnabled: (enabled: boolean) => void;
+  setOnboardingDone: (done: boolean) => void;
 }
 
 export const usePrefsStore = create<PrefsState>()(
@@ -32,6 +34,7 @@ export const usePrefsStore = create<PrefsState>()(
       savedRoutes: [],
       adFreeUntil: 0,
       notificationsEnabled: true,
+      onboardingDone: false,
       setLang: (lang) => set({ lang }),
       addSavedRoute: (route) => set(s => ({
         savedRoutes: [...s.savedRoutes.filter(r => r.id !== route.id), route].slice(-10),
@@ -40,9 +43,10 @@ export const usePrefsStore = create<PrefsState>()(
       grantAdFree: (durationMs) => set({ adFreeUntil: Date.now() + durationMs }),
       isAdFree: () => Date.now() < get().adFreeUntil,
       setNotificationsEnabled: (enabled) => set({ notificationsEnabled: enabled }),
+      setOnboardingDone: (done) => set({ onboardingDone: done }),
     }),
     {
-      name: 'transit-my-prefs',
+      name: 'my-public-prefs',
       storage: createJSONStorage(() => AsyncStorage),
     }
   )

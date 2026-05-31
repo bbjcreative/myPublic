@@ -1,5 +1,5 @@
 import { transit_realtime } from 'gtfs-realtime-bindings';
-import { VehiclePosition } from '@transit-my/lambda-shared/types';
+import { VehiclePosition } from '@my-public/lambda-shared/types';
 
 const OCCUPANCY_MAP: Record<number, VehiclePosition['occupancy']> = {
   0: 'EMPTY',

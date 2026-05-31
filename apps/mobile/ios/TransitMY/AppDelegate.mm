@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import <Foundation/Foundation.h>
 #import <React/RCTBundleURLProvider.h>
 #import <GoogleMaps/GoogleMaps.h>
 
@@ -6,8 +7,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  // Google Maps SDK — must be called before [super application:...] on iOS
-  [GMSServices provideAPIKey:@"AIzaSyD7LxlZsUTPUEkKe8YEHiBRyiAmL0t5htY"];
+  // Google Maps SDK — key is read from Info.plist (GMSApiKey), injected at build time by EAS
+  NSString *mapsApiKey = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"GMSApiKey"];
+  [GMSServices provideAPIKey:mapsApiKey];
 
   self.moduleName = @"TransitMY";
   self.initialProps = @{};

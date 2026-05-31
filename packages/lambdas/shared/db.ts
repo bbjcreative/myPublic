@@ -11,7 +11,7 @@ export const ddb = DynamoDBDocumentClient.from(client, {
   unmarshallOptions: { wrapNumbers: false },
 });
 
-export const TABLE_STOPS = process.env.DYNAMODB_TABLE_STOPS ?? 'transit-stops';
-export const TABLE_ROUTES = process.env.DYNAMODB_TABLE_ROUTES ?? 'transit-routes';
-export const TABLE_USERS = process.env.DYNAMODB_TABLE_USERS ?? 'transit-users';
-export const TABLE_ALERTS = process.env.DYNAMODB_TABLE_ALERTS ?? 'transit-alerts';
+export const TABLE_STOPS = process.env.DYNAMODB_TABLE_STOPS ?? 'mypublic-stops';
+export const TABLE_ROUTES = process.env.DYNAMODB_TABLE_ROUTES ?? 'mypublic-routes';
+export const TABLE_USERS = process.env.DYNAMODB_TABLE_USERS ?? 'mypublic-users';
+export const TABLE_ALERTS = process.env.DYNAMODB_TABLE_ALERTS ?? 'mypublic-alerts';

@@ -1,8 +1,8 @@
 import { BatchWriteCommand, PutCommand } from '@aws-sdk/lib-dynamodb';
 import { PutObjectCommand } from '@aws-sdk/client-s3';
 import { S3Client } from '@aws-sdk/client-s3';
-import { ddb, TABLE_STOPS, TABLE_ROUTES } from '@transit-my/lambda-shared/db';
-import { Stop, Route } from '@transit-my/lambda-shared/types';
+import { ddb, TABLE_STOPS, TABLE_ROUTES } from '@my-public/lambda-shared/db';
+import { Stop, Route } from '@my-public/lambda-shared/types';
 
 const s3 = new S3Client({ region: process.env.AWS_REGION ?? 'ap-southeast-5' });
 const S3_BUCKET = process.env.GTFS_S3_BUCKET ?? '';

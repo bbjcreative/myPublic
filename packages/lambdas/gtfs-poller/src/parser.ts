@@ -1,5 +1,5 @@
 import { parse } from 'csv-parse/sync';
-import { Stop, Route, StopSequenceEntry } from '@transit-my/lambda-shared/types';
+import { Stop, Route, StopSequenceEntry } from '@my-public/lambda-shared/types';
 import { GtfsFeed } from './fetcher';
 
 function encodeGeohash4(lat: number, lon: number): string {

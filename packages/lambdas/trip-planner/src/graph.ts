@@ -1,6 +1,6 @@
 import { QueryCommand, ScanCommand } from '@aws-sdk/lib-dynamodb';
-import { ddb, TABLE_STOPS, TABLE_ROUTES } from '@transit-my/lambda-shared/db';
-import { Stop, Route } from '@transit-my/lambda-shared/types';
+import { ddb, TABLE_STOPS, TABLE_ROUTES } from '@my-public/lambda-shared/db';
+import { Stop, Route } from '@my-public/lambda-shared/types';
 import { getDistance } from 'geolib';
 
 export interface TransitNode {

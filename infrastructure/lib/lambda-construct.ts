@@ -107,7 +107,7 @@ export class LambdaConstruct extends Construct {
     // Grant SNS publish for notification dispatcher
     notificationDispatcherFn.addToRolePolicy(new iam.PolicyStatement({
       actions: ['sns:Publish'],
-      resources: [`arn:aws:sns:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:transit-alerts`],
+      resources: [`arn:aws:sns:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:mypublic-alerts`],
     }));
 
     // Function URLs (replaces API Gateway — free)

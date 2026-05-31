@@ -6,7 +6,7 @@ import { LambdaConstruct } from './lambda-construct';
 import { CloudFrontConstruct } from './cloudfront-construct';
 import { EventBridgeConstruct } from './eventbridge-construct';
 
-export class TransitStack extends cdk.Stack {
+export class MyPublicStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 

@@ -9,7 +9,7 @@ export class S3Construct extends Construct {
     super(scope, id);
 
     this.gtfsBucket = new s3.Bucket(this, 'GtfsCache', {
-      bucketName: `transit-my-gtfs-cache-${cdk.Aws.ACCOUNT_ID}`,
+      bucketName: `mypublic-gtfs-cache-${cdk.Aws.ACCOUNT_ID}`,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
       encryption: s3.BucketEncryption.S3_MANAGED,
       versioned: false,

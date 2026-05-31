@@ -1,9 +1,9 @@
 import { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from 'aws-lambda';
 import { SNSClient, PublishCommand } from '@aws-sdk/client-sns';
 import { PutCommand, GetCommand, QueryCommand } from '@aws-sdk/lib-dynamodb';
-import { jsonResponse, errorResponse, ApiError } from '@transit-my/lambda-shared/errors';
-import { ddb, TABLE_ALERTS, TABLE_USERS } from '@transit-my/lambda-shared/db';
-import { AlertRecord } from '@transit-my/lambda-shared/types';
+import { jsonResponse, errorResponse, ApiError } from '@my-public/lambda-shared/errors';
+import { ddb, TABLE_ALERTS, TABLE_USERS } from '@my-public/lambda-shared/db';
+import { AlertRecord } from '@my-public/lambda-shared/types';
 import { buildAlertMessage } from './templates';
 
 const sns = new SNSClient({ region: process.env.AWS_REGION ?? 'ap-southeast-5' });

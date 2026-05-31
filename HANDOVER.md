@@ -1,7 +1,7 @@
 # AI Agent Handover Document
-## Project: TransitMY — Malaysia Public Transit App
-**Last updated:** 2026-05-30
-**Session status:** Phase 3 complete. Code written. Nothing deployed yet.
+## Project: myPublic — Malaysia Public Transit App
+**Last updated:** 2026-05-31
+**Session status:** Phase 3 + app management + auth complete. Code written. Nothing deployed yet.
 **Repository:** https://github.com/bbjcreative/myPublic
 
 ---
@@ -30,7 +30,7 @@ A free, ad-supported Malaysian public transportation app for Android and iOS. Re
 ## 2. Repository Layout
 
 ```
-transit-my/
+my-public/
 ├── apps/mobile/            React Native (Expo bare) — the user-facing app
 ├── packages/lambdas/
 │   ├── shared/             Shared DynamoDB client, error types, validators
@@ -43,7 +43,7 @@ transit-my/
 └── .github/workflows/      PR checks, Lambda deploy, EAS mobile build
 ```
 
-All packages are npm workspaces. Run everything from `transit-my/` root.
+All packages are npm workspaces. Run everything from `my-public/` root.
 
 ---
 
@@ -52,6 +52,8 @@ All packages are npm workspaces. Run everything from `transit-my/` root.
 | Layer | Choice | Reason |
 |---|---|---|
 | Mobile | React Native, Expo bare workflow | AdMob + Google Maps need native modules |
+| Auth | Firebase Auth + `@react-native-google-signin/google-signin` | Google Sign-In, no password management |
+| Cloud sync | Firebase Firestore | Saved routes synced across user devices |
 | State | Zustand (in-memory) + Zustand + AsyncStorage (persisted) | Lightweight, excellent DX |
 | Data fetching | React Query v5 (`@tanstack/react-query`) | Polling, caching, mutations |
 | Maps | `react-native-maps` with Google Maps SDK | Best Malaysia coverage |
@@ -68,18 +70,29 @@ All packages are npm workspaces. Run everything from `transit-my/` root.
 ## 4. Current State — What Exists
 
 ### Written and on disk ✅
-105 files across all layers. Every file has real logic — no placeholder comments.
+~115 files across all layers. Every file has real logic — no placeholder comments.
 
-### NOT yet done ⬜
+**Latest additions (2026-05-31):**
+- Onboarding flow (`OnboardingScreen.tsx`) — 3 slides → language → location
+- Firebase Auth + Google Sign-In (`authStore.ts`, `googleSignIn.ts`)
+- Firestore cloud saved routes (`firestoreRoutes.ts`, `useSavedRoutes.ts`)
+- Profile tab redesigned with signed-in/out states (`SavedRoutesScreen.tsx`)
+- Firebase Android + iOS config files placed (`google-services.json`, `GoogleService-Info.plist`)
+
+### NOT yet done / needs user action ⬜
 - `npm install` has not been run — no `node_modules`
 - AWS infrastructure has not been deployed (`cdk deploy` not run)
-- No `.env` file exists — user must copy `.env.example` and fill values
 - GTFS data has never been polled — DynamoDB tables are empty
-- No EAS project ID set — `app.json` has `"REPLACE_WITH_EAS_PROJECT_ID"`
-- No AdMob account created — all ad unit IDs are placeholder
-- iOS native config (`Info.plist`) is present but incomplete — no real AdMob app ID
-- `AndroidManifest.xml` exists as a path reference but the file content was not written — see Section 6
+- EAS project ID not set — replace `REPLACE_WITH_EAS_PROJECT_ID` in `app.json` (run `eas project:init`)
+- Google Sign-In Web Client ID not set — replace `REPLACE_WITH_WEB_CLIENT_ID` in `src/services/googleSignIn.ts`
+- iOS Google Sign-In URL scheme not set — replace `REPLACE_WITH_REVERSED_CLIENT_ID` in `app.json` (value is in `GoogleService-Info.plist`)
+- Firestore not enabled in Firebase Console — must enable before cloud saved routes work
+- Apple Developer account not created ($99/year) — no iOS build possible yet
+- App Store Connect App ID not set — replace `REPLACE_WITH_ASC_APP_ID` in `eas.json`
+- Apple Team ID not set — replace `REPLACE_WITH_APPLE_TEAM_ID` in `eas.json`
+- `ForceUpdateModal.tsx` — App Store URL has placeholder `id_REPLACE_WITH_APP_STORE_ID`
 - Full address search in `RoutePlannerScreen` is hardcoded (KL Sentral → Putrajaya Sentral) pending geocoding integration
+- `ios/TransitMY/` folder name needs manual Xcode rename to `myPublic`
 
 ---
 
@@ -87,7 +100,7 @@ All packages are npm workspaces. Run everything from `transit-my/` root.
 
 ### Step 1 — Install dependencies
 ```bash
-cd transit-my
+cd my-public
 npm install
 ```
 
@@ -124,11 +137,19 @@ These are real missing pieces — not design decisions, but unfinished work:
 |---|---|---|
 | ~~`AndroidManifest.xml`~~ | ✅ Done 2026-05-30 | Real AdMob App ID wired, permissions, delay init flag set |
 | ~~`Info.plist`~~ | ✅ Done 2026-05-30 | Real AdMob App ID, ATT string, SKAdNetwork entries, location strings |
-| EAS `eas.json` missing | `apps/mobile/eas.json` | Create production build profile |
+| ~~EAS `eas.json` missing~~ | ✅ Done 2026-05-31 | Build profiles: development, preview, production; submit config for Play + App Store |
+| ~~Firebase config files~~ | ✅ Done 2026-05-31 | `google-services.json` + `GoogleService-Info.plist` placed for both platforms |
+| ~~Onboarding flow~~ | ✅ Done 2026-05-31 | 3-slide tour → language → location permission; hydration-aware routing |
+| ~~User accounts~~ | ✅ Done 2026-05-31 | Google Sign-In + Firebase Auth + Firestore saved routes sync; Profile tab redesigned |
+| Google Sign-In Web Client ID | `src/services/googleSignIn.ts` | Replace `REPLACE_WITH_WEB_CLIENT_ID` — get from Firebase Console → Project Settings → Web App |
+| iOS Google Sign-In URL scheme | `app.json` | Replace `REPLACE_WITH_REVERSED_CLIENT_ID` — value is in `ios/TransitMY/GoogleService-Info.plist` |
+| Firestore not enabled | Firebase Console | Build → Firestore Database → Create database (test mode to start) |
+| EAS Project ID | `app.json` + `eas.json` | Run `eas project:init` to replace `REPLACE_WITH_EAS_PROJECT_ID` |
 | Address geocoding | `apps/mobile/src/screens/RoutePlannerScreen.tsx` | Replace hardcoded KL Sentral/Putrajaya with a text search + geocode flow (Google Places API or Nominatim) |
-| Stops `/stops/nearby` Lambda | Not yet written | The mobile app calls `/stops/nearby` but no Lambda handles this route yet — needs a new Lambda or extension of `realtime-proxy` |
+| Stops `/stops/nearby` Lambda | Not yet written | The mobile app calls `/stops/nearby` but no Lambda handles this route yet — most critical gap |
 | Trip planner: time-aware routing | `packages/lambdas/trip-planner/src/graph.ts` | Current implementation ignores `depart_at` — for production, filter trips by `service_id` (calendar.txt) and time window |
 | DynamoDB graph scan (2000 stop limit) | `packages/lambdas/trip-planner/src/graph.ts` | Replace `ScanCommand` with geohash GSI query for bounding box around origin/destination |
+| iOS folder name | `ios/TransitMY/` in Xcode | Rename to `myPublic` in Xcode — must be done manually, cannot be scripted |
 
 ---
 
@@ -207,11 +228,11 @@ This project was bootstrapped under `agent.yaml` which defines a 3-phase pipelin
 - The next logical tasks are in Section 6 (Known Gaps) above
 
 **Suggested next session priorities (in order):**
-1. Write `AndroidManifest.xml` and complete `Info.plist`
-2. Write `apps/mobile/eas.json` build profile
-3. Implement `/stops/nearby` Lambda (most critical — mobile home screen depends on it)
-4. Fix trip planner DynamoDB scan → geohash bounding box query
-5. Add address search/geocoding to `RoutePlannerScreen`
+1. Help user complete the 4 pending user actions (Web Client ID, REVERSED_CLIENT_ID, Firestore, EAS init)
+2. Implement `/stops/nearby` Lambda (most critical — mobile home screen calls it on load, nothing handles it yet)
+3. Fix trip planner DynamoDB scan → geohash GSI bounding box query (2000-stop limit)
+4. Add address search/geocoding to `RoutePlannerScreen` (currently hardcoded KL Sentral → Putrajaya)
+5. Deploy AWS infrastructure: `cdk deploy` + seed GTFS data
 
 ---
 

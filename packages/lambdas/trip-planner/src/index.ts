@@ -1,6 +1,6 @@
 import { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from 'aws-lambda';
-import { jsonResponse, errorResponse, ApiError } from '@transit-my/lambda-shared/errors';
-import { validateLatLon } from '@transit-my/lambda-shared/validation';
+import { jsonResponse, errorResponse, ApiError } from '@my-public/lambda-shared/errors';
+import { validateLatLon } from '@my-public/lambda-shared/validation';
 import { buildTransitGraph, findNearestStops } from './graph';
 import { dijkstra } from './dijkstra';
 import { formatTripOptions } from './formatter';

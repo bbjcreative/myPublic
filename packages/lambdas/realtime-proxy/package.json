@@ -1,5 +1,5 @@
 {
-  "name": "@transit-my/realtime-proxy",
+  "name": "@my-public/realtime-proxy",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,7 +7,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@transit-my/lambda-shared": "*",
+    "@my-public/lambda-shared": "*",
     "axios": "^1.7.2",
     "gtfs-realtime-bindings": "^1.1.0"
   },

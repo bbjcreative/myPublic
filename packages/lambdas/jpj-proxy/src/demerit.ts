@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ApiError } from '@transit-my/lambda-shared/errors';
+import { ApiError } from '@my-public/lambda-shared/errors';
 
 const JPJ_BASE = 'https://www.mygdx.gov.my/api';
 

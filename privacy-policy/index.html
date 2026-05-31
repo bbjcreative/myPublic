@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — myPublic</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #F9FAFB;
+      color: #111827;
+      line-height: 1.7;
+    }
+    header {
+      background: #1A56DB;
+      color: #fff;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    header h1 { font-size: 28px; font-weight: 800; }
+    header p { margin-top: 6px; opacity: 0.85; font-size: 14px; }
+    main {
+      max-width: 760px;
+      margin: 40px auto;
+      padding: 0 24px 64px;
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1A56DB;
+      margin: 36px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #E5E7EB;
+    }
+    p { margin-bottom: 14px; font-size: 15px; }
+    ul { margin: 10px 0 14px 20px; }
+    li { margin-bottom: 8px; font-size: 15px; }
+    a { color: #1A56DB; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .badge {
+      display: inline-block;
+      background: #EFF6FF;
+      color: #1A56DB;
+      border: 1px solid #BFDBFE;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      color: #6B7280;
+      border-top: 1px solid #E5E7EB;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>myPublic</h1>
+  <p>Privacy Policy</p>
+</header>
+
+<main>
+  <span class="badge">Effective date: 1 June 2026</span>
+
+  <p>
+    myPublic ("we", "our", or "the app") is a free Malaysian public transit application
+    developed by WZB Group. This policy explains what personal data we collect, why we
+    collect it, and your rights under Malaysia's <strong>Personal Data Protection Act 2010
+    (PDPA)</strong>.
+  </p>
+
+  <h2>1. Data We Collect</h2>
+
+  <p><strong>Location (GPS)</strong></p>
+  <ul>
+    <li>Used to show transit stops near you and to trigger get-off haptic alerts during navigation.</li>
+    <li>Collected only while the app is in use (foreground), or in the background during an active navigation session.</li>
+    <li>Not stored on our servers. Processed locally on your device or passed anonymously to our backend to query nearby stops.</li>
+  </ul>
+
+  <p><strong>Push Notification Token (FCM)</strong></p>
+  <ul>
+    <li>An opaque device token provided by Google Firebase Cloud Messaging.</li>
+    <li>Stored in our database only if you opt in to disruption alerts.</li>
+    <li>Used exclusively to deliver service disruption notifications for routes you subscribe to.</li>
+    <li>Deleted from our database when you disable notifications in Settings.</li>
+  </ul>
+
+  <p><strong>JPJ Data (vehicle plate &amp; IC number)</strong></p>
+  <ul>
+    <li>Entered voluntarily in the JPJ Checker feature.</li>
+    <li><strong>Never stored by myPublic.</strong> The data is transmitted directly to the Malaysian Government's mygdx.gov.my API and the response is shown to you. We do not log or retain this information.</li>
+  </ul>
+
+  <p><strong>App Preferences</strong></p>
+  <ul>
+    <li>Language preference (English / Bahasa Malaysia) and saved routes are stored locally on your device using AsyncStorage.</li>
+    <li>This data never leaves your device.</li>
+  </ul>
+
+  <p><strong>Crash &amp; Diagnostic Data</strong></p>
+  <ul>
+    <li>If the app crashes, Firebase Crashlytics automatically sends a report to us containing the error, device model, OS version, and app version.</li>
+    <li>No personally identifiable information is included in crash reports.</li>
+  </ul>
+
+  <p><strong>Analytics</strong></p>
+  <ul>
+    <li>Firebase Analytics collects anonymous usage data: which screens you visit, session duration, and device type.</li>
+    <li>This data is aggregated and cannot identify you individually.</li>
+    <li>On iOS, you will be asked for permission via Apple's App Tracking Transparency prompt before analytics are activated.</li>
+  </ul>
+
+  <h2>2. Advertising</h2>
+  <p>
+    myPublic is free and supported by ads served by <strong>Google AdMob</strong>.
+    AdMob may collect your device's advertising ID and IP address to serve relevant ads.
+    Ads are never shown during active navigation (NavigationScreen) as a safety measure.
+    To opt out of personalised ads, you can reset or limit your device's advertising ID
+    in your phone's Settings.
+  </p>
+
+  <h2>3. Third-Party Services</h2>
+  <ul>
+    <li><strong>Google Maps SDK</strong> — powers the in-app map. Subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+    <li><strong>Google AdMob</strong> — ad serving. Subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+    <li><strong>Firebase (Crashlytics, Analytics, Remote Config)</strong> — app health and configuration. Subject to <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase's Privacy Policy</a>.</li>
+    <li><strong>AWS (Lambda, DynamoDB, CloudFront)</strong> — our backend infrastructure. Data is processed in the ap-southeast-5 (Kuala Lumpur) AWS region.</li>
+    <li><strong>data.gov.my</strong> — Malaysian Government open data API for GTFS transit schedules.</li>
+    <li><strong>mygdx.gov.my</strong> — Malaysian Government JPJ API. Only queried when you use the JPJ Checker feature.</li>
+  </ul>
+
+  <h2>4. Data Retention</h2>
+  <ul>
+    <li>Push notification tokens: retained until you disable notifications in the app, or until the token expires (typically 60 days of inactivity).</li>
+    <li>Crash reports: retained in Firebase for 90 days.</li>
+    <li>Analytics data: aggregated data retained per Google's standard retention schedule.</li>
+    <li>All other user data (preferences, saved routes): stored only on your device.</li>
+  </ul>
+
+  <h2>5. Your Rights Under PDPA 2010</h2>
+  <p>Under Malaysia's Personal Data Protection Act 2010, you have the right to:</p>
+  <ul>
+    <li><strong>Access</strong> — request a copy of any personal data we hold about you.</li>
+    <li><strong>Correction</strong> — request correction of inaccurate data.</li>
+    <li><strong>Withdrawal of consent</strong> — opt out of push notifications at any time via the app Settings or your device notification settings.</li>
+    <li><strong>Deletion</strong> — request deletion of your push notification token from our servers.</li>
+  </ul>
+  <p>
+    To exercise these rights, contact us at
+    <a href="mailto:jayp@wzbgroup.my">jayp@wzbgroup.my</a>.
+    We will respond within 21 days.
+  </p>
+
+  <h2>6. Children's Privacy</h2>
+  <p>
+    myPublic is not directed at children under 13. We do not knowingly collect personal
+    data from children.
+  </p>
+
+  <h2>7. Changes to This Policy</h2>
+  <p>
+    We may update this policy from time to time. When we do, we will update the effective
+    date above. Continued use of the app after changes constitutes acceptance of the
+    updated policy.
+  </p>
+
+  <h2>8. Contact</h2>
+  <p>
+    For privacy enquiries:<br />
+    WZB Group<br />
+    Email: <a href="mailto:jayp@wzbgroup.my">jayp@wzbgroup.my</a>
+  </p>
+</main>
+
+<footer>
+  &copy; 2026 WZB Group. myPublic is a free public service. No paywalls, ever.
+</footer>
+
+</body>
+</html>

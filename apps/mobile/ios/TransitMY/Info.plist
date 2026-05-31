@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <!-- Google Maps API Key — injected by EAS Build from MAPS_API_KEY secret -->
+    <key>GMSApiKey</key>
+    <string>$(MAPS_API_KEY)</string>
+
     <!-- AdMob -->
     <key>GADApplicationIdentifier</key>
     <string>ca-app-pub-5181607198940787~9879382689</string>
@@ -33,25 +37,25 @@
 
     <!-- App Tracking Transparency — required before mobileAds().initialize() -->
     <key>NSUserTrackingUsageDescription</key>
-    <string>TransitMY uses this to show relevant ads and keep the app free for everyone.</string>
+    <string>myPublic uses this to show relevant ads and keep the app free for everyone.</string>
 
     <!-- Location -->
     <key>NSLocationWhenInUseUsageDescription</key>
-    <string>TransitMY uses your location to show nearby stops and provide get-off alerts.</string>
+    <string>myPublic uses your location to show nearby stops and provide get-off alerts.</string>
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>TransitMY uses your location in the background to trigger get-off alerts during navigation.</string>
+    <string>myPublic uses your location in the background to trigger get-off alerts during navigation.</string>
 
     <!-- Required Expo / RN keys -->
     <key>CFBundleDevelopmentRegion</key>
     <string>en</string>
     <key>CFBundleDisplayName</key>
-    <string>TransitMY</string>
+    <string>myPublic</string>
     <key>CFBundleExecutable</key>
     <string>$(EXECUTABLE_NAME)</string>
     <key>CFBundleIdentifier</key>
-    <string>my.transit.app</string>
+    <string>my.mypublic.app</string>
     <key>CFBundleName</key>
-    <string>TransitMY</string>
+    <string>myPublic</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
